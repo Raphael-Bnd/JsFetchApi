@@ -20,3 +20,25 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
   })
   .then((json) => console.log(json))
   .catch((erro) => console.log(erro));
+
+const nomeInput = document.querySelector('#nome');
+const emailInput = document.querySelector('#email');
+
+document.querySelector('#btn').addEventListener('click', () => {
+  const user = {
+    nome: nomeInput.value,
+    email: emailInput.value,
+  };
+
+  createUser(user);
+});
+
+function createUser(user) {
+  fetch('API/URL', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+}
